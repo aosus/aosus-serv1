@@ -1,0 +1,32 @@
+name: deploy-libreddit
+
+on:
+  push:
+    paths:
+      - '.github/libreddit.yml'
+      - 'libreddit/**'
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Tailscale
+        uses: tailscale/github-action@ce41a99162202a647a4b24c30c558a567b926709
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+          hostname: Github-actions
+          version: 1.36.2
+
+      - name: Start Deployment
+        uses: aosus/docker-compose-gitops-action@v1
+        with:
+          remote_docker_host: ${{ secrets.server_address }}
+          tailscale_ssh: true # no need for manual private and public keys
+          args: -p libreddit up -d

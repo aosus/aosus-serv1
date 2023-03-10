@@ -1,0 +1,4 @@
+libreddit.aosus.org {
+    reverse_proxy libreddit:3000
+    import global
+}

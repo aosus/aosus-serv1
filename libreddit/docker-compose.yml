@@ -1,0 +1,14 @@
+version: '3'
+
+networks:
+  web:
+    external: true
+
+services:
+  libreddit:
+    image: libreddit/libreddit
+    expose:
+      - 8080
+    restart: always
+    networks:
+      web:
