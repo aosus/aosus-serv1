@@ -1,0 +1,22 @@
+version: '3'
+
+networks:
+  web:
+    external: true
+
+services:
+  watchtower:
+      image: containrrr/watchtower:latest
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /etc/localtime:/etc/localtime:ro
+      environment:
+        - WATCHTOWER_NOTIFICATIONS_LEVEL=error
+        - WATCHTOWER_NOTIFICATIONS=shoutrrr
+        - WATCHTOWER_NOTIFICATION_URL
+        - 'WATCHTOWER_NOTIFICATION_TEMPLATE={{range .}} watchtower-aosus-serv1: {{println}} {{.Message}}{{end}}}'
+        - WATCHTOWER_CLEANUP=true
+        - WATCHTOWER_INCLUDE_RESTARTING=true
+        - WATCHTOWER_SCHEDULE=* * 21 ? * *
+        - WATCHTOWER_ROLLING_RESTART=true
+        - WATCHTOWER_TIMEOUT=40s
