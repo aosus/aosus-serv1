@@ -3,7 +3,7 @@ name: deploy-lingva
 on:
   push:
     paths:
-      - '.github/lingva.yml'
+      - '.github/workflows/workflows/lingva.yml'
       - 'lingva/**'
     branches: [main]
   workflow_dispatch:
@@ -29,4 +29,5 @@ jobs:
         with:
           remote_docker_host: ${{ secrets.server_address }}
           tailscale_ssh: true # no need for manual private and public keys
+          compose_file_path: lingva/docker-compose.yml
           args: -p lingva up -d

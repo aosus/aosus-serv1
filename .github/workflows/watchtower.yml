@@ -3,7 +3,7 @@ name: deploy-watchtower
 on:
   push:
     paths:
-      - '.github/watchtower.yml'
+      - '.github/workflows/watchtower.yml'
       - 'watchtower/**'
     branches: [main]
   workflow_dispatch:
@@ -29,4 +29,5 @@ jobs:
         with:
           remote_docker_host: ${{ secrets.server_address }}
           tailscale_ssh: true # no need for manual private and public keys
+          compose_file_path: watchtower/docker-compose.yml
           args: -p watchtower up -d

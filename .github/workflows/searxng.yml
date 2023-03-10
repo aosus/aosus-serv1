@@ -3,7 +3,7 @@ name: deploy-searxng
 on:
   push:
     paths:
-      - '.github/searxng.yml'
+      - '.github/workflows/searxng.yml'
       - 'searxng/**'
     branches: [main]
   workflow_dispatch:
@@ -31,4 +31,5 @@ jobs:
           tailscale_ssh: true # no need for manual private and public keys
           upload_directory: true # upload docker directory
           docker_compose_directory: searxng # directory to upload
+          compose_file_path: searxng/docker-compose.yml
           args: -p searxng up -d
