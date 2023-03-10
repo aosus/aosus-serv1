@@ -1,0 +1,82 @@
+version: '3.3'
+
+networks:
+  default:
+  web:
+    external: true
+
+services:
+  searx:
+    image: searxng/searxng:latest
+    container_name: searx
+    restart: unless-stopped
+    depends_on:
+      - redis
+      - morty
+    expose:
+      - 8080
+    environment:
+      - BASE_URL="https://search.aosus.org"
+      - IMAGE_PROXY=True
+      - MORTY_URL=https://proxy.search.aosus.org
+      - MORTY_KEY=2GVy19gwkRX4qIe51Hr67X+BW8PWG15HKqdunHW89xH9
+      - INSTANCE_NAME="بحث أسس"
+      - AUTOCOMPLETE=google
+    volumes:
+      - /home/ubuntu/searxng/settings.yml:/etc/searxng/settings.yml:ro
+      - /home/ubuntu/searxng/uwsgi.yml:/etc/searxng/uwsgi.yml:ro
+      - /home/ubuntu/searxng/fav.png:/usr/local/searxng/searx/static/themes/simple/img/favicon.png:ro
+      - /home/ubuntu/searxng/fav.png:/usr/local/searxng/searx/static/themes/oscar/img/favicon.png:ro
+      - /home/ubuntu/searxng/logow.png:/usr/local/searxng/searx/static/themes/simple/img/searxng.png:ro
+      - /home/ubuntu/searxng/logow.png:/usr/local/searxng/searx/static/themes/oscar/img/logo_searx_a_n.png:ro
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    networks:
+      web:
+      default:
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
+
+  redis:
+    container_name: redis
+    image: "redis:alpine"
+    command: redis-server --save "" --appendonly "no"
+    restart: always
+    tmpfs:
+      - /var/lib/redis
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+
+  morty:
+    container_name: morty
+    image: ghcr.io/dalf/morty:latest
+    user: "1000:1000"
+    restart: always
+    # ports:
+    #   - 8003:8003
+    command: -debug -timeout 6
+    environment:
+      - MORTY_KEY=+r8kg0DqSSMlXSK8QxCDlKsWQ7/W1WTq+9jy0+c/OHOo
+      - MORTY_ADDRESS=0.0.0.0:8003
+      - VIRTUAL_HOST=proxy.search.aosus.org
+      - LETSENCRYPT_HOST=proxy.search.aosus.org
+      - VIRTUAL_PORT=8003
+    logging:
+      driver: none
+    read_only: true
+    cap_drop:
+      - ALL
+    networks:
+      default:
+      web:
