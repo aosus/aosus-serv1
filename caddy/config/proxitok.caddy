@@ -1,0 +1,4 @@
+proxitok.aosus.org {
+    reverse_proxy proxitok:80
+    import global
+}
