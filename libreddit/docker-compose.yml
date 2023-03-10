@@ -6,7 +6,7 @@ networks:
 
 services:
   libreddit:
-    image: libreddit/libreddit
+    image: libreddit/libreddit:arm
     expose:
       - 8080
     restart: always
