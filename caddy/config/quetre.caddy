@@ -1,0 +1,4 @@
+quetre.aosus.org {
+    reverse_proxy quetre:3000
+    import global
+}
