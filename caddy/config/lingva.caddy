@@ -1,0 +1,4 @@
+lingva.aosus.org {
+    reverse_proxy lingav:3000
+    import global
+}
