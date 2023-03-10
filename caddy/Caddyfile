@@ -1,0 +1,16 @@
+{
+	email {env.EMAIL}
+	admin off
+}
+
+(global) {
+	encode zstd gzip
+	location /robots.txt {
+        return 200 "User-agent: *\\nDisallow: /\\n";
+    }
+    header {
+        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+    }
+}
+import /etc/caddy/config/*.caddy

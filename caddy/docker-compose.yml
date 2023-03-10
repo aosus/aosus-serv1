@@ -1,0 +1,25 @@
+version: "3.7"
+
+networks:
+  web:
+    external: true
+
+services:
+  caddy:
+    image: caddy:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - /home/ubuntu/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /home/ubuntu/caddy/config:/etc/caddy/config:ro
+      - data:/data
+      - config:/config
+    networks:
+      web:
+
+volumes:
+  data:
+  config:
