@@ -8,21 +8,34 @@
 
 		# keep referrer data off
 		Referrer-Policy no-referrer
-
-		# prevent for appearing in search engine for private instances (option)
-		X-Robots-Tag noindex
-	}
-	import global
-}
+	}}
 
 piped.aosus.org {
 	reverse_proxy pipedfrontend:80
 	import piped-global
+	# aosus settings
+    location /robots.txt {
+        return 200 "User-agent: *\\nDisallow: /\\n";
+    }
+    header {
+        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+    }
+	encode zstd gzip
 }
 
 api.piped.aosus.org {
 	reverse_proxy piped-nginx:80
 	import piped-global
+	# aosus settings
+    location /robots.txt {
+        return 200 "User-agent: *\\nDisallow: /\\n";
+    }
+    header {
+        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+    }
+	encode zstd gzip
 }
 
 proxy.piped.aosus.org {
@@ -45,4 +58,13 @@ proxy.piped.aosus.org {
 			header_down -alt-svc
 		}
 	}
+	# aosus settings
+    location /robots.txt {
+        return 200 "User-agent: *\\nDisallow: /\\n";
+    }
+    header {
+        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+    }
+	encode zstd gzip
 }

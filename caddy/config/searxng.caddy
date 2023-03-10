@@ -6,7 +6,6 @@ search.aosus.org {
   log {
         output discard
   }
-  import global
 
   @api {
         path /config
@@ -83,6 +82,11 @@ search.aosus.org {
   header @notimageproxy {
         Content-Security-Policy "upgrade-insecure-requests; default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; form-action 'self' https://github.com/searxng/searxng/issues/new; font-src 'self'; frame-ancestors 'self'; base-uri 'self'; connect-src 'self' https://overpass-api.de; img-src 'self' data: https://*.tile.openstreetmap.org; frame-src https://www.youtube-nocookie.com https://player.vimeo.com https://www.dailymotion.com https://www.deezer.com https://www.mixcloud.com https://w.soundcloud.com https://embed.spotify.com"
   }
+# aosus settings
+  location /robots.txt {
+        return 200 "User-agent: *\\nDisallow: /\\n";
+  }
+  encode zstd gzip
 
   # SearXNG
   handle {
@@ -92,5 +96,4 @@ search.aosus.org {
                header_up X-Forwarded-Proto {http.request.scheme}
         }
   }
-
 }

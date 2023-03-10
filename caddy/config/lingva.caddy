@@ -1,4 +1,11 @@
 lingva.aosus.org {
     reverse_proxy lingav:3000
-    import global
+    location /robots.txt {
+        return 200 "User-agent: *\\nDisallow: /\\n";
+    }
+    header {
+        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+    }
+	encode zstd gzip
 }
