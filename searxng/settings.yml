@@ -134,6 +134,17 @@ engines:
     engine: duckduckgo_definitions
     disabled: false
 
+# enable other git sources
+
+  - name: codeberg
+    disabled: false
+
+  - name: gitlab
+    disabled: false
+
+  - name: sourcehut
+    disabled: false
+
 #  disable useless image search sources
   - name: unsplash
     disabled: true
