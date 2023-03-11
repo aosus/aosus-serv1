@@ -10,3 +10,7 @@ Disallow: /"
     }
 	encode zstd gzip
 }
+
+mobile.nitter.aosus.org {
+	redir https://nitter.aosus.org{uri} permanent
+}
