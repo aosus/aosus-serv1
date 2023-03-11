@@ -1,6 +1,6 @@
 libreddit.aosus.org {
     encode zstd gzip
-    reverse_proxy libreddit:3000
+    reverse_proxy libreddit:8080
 	respond /robots.txt 200 {
 				body "User-agent: *
 	Disallow: /"

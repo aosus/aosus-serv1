@@ -5,7 +5,7 @@ networks:
     external: true
 
 services:
-  lingva:
+  quetre:
     image: fariszr/quetre:latest
     expose:
       - 3000
