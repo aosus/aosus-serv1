@@ -66,4 +66,5 @@ services:
       - POSTGRES_PASSWORD
 
 volumes:
-  piped-proxy: null
+  piped-proxy:
+    external: true

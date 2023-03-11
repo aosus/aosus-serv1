@@ -21,9 +21,9 @@ services:
       - piped-proxy:/var/run/ytproxy
     networks:
       web:
-    volumes_from:
-      - piped-proxy:rw
 
 volumes:
   data:
   config:
+  piped-proxy:
+    external: true
