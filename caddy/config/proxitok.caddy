@@ -1,11 +1,12 @@
 proxitok.aosus.org {
+    encode zstd gzip
     reverse_proxy proxitok:80
-    location /robots.txt {
-        return 200 "User-agent: *\\nDisallow: /\\n";
-    }
+	respond /robots.txt 200 {
+				body "User-agent: *
+	Disallow: /"
+	}    
     header {
         X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
 		X-XSS-Protection "1; mode=block"
     }
-	encode zstd gzip
 }

@@ -1,8 +1,9 @@
 lingva.aosus.org {
     reverse_proxy lingav:3000
-    location /robots.txt {
-        return 200 "User-agent: *\\nDisallow: /\\n";
-    }
+	respond /robots.txt 200 {
+				body "User-agent: *
+	Disallow: /"
+	}    
     header {
         X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
 		X-XSS-Protection "1; mode=block"
