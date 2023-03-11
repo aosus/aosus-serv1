@@ -22,12 +22,15 @@ services:
       - INSTANCE_NAME="بحث أسس"
       - AUTOCOMPLETE=google
     volumes:
-      - /home/ubuntu/searxng/settings.yml:/etc/searxng/settings.yml:ro
-      - /home/ubuntu/searxng/uwsgi.yml:/etc/searxng/uwsgi.yml:ro
       - /home/ubuntu/searxng/fav.png:/usr/local/searxng/searx/static/themes/simple/img/favicon.png:ro
       - /home/ubuntu/searxng/fav.png:/usr/local/searxng/searx/static/themes/oscar/img/favicon.png:ro
       - /home/ubuntu/searxng/logow.png:/usr/local/searxng/searx/static/themes/simple/img/searxng.png:ro
       - /home/ubuntu/searxng/logow.png:/usr/local/searxng/searx/static/themes/oscar/img/logo_searx_a_n.png:ro
+    configs:
+      - source: searxng
+        target: /etc/searxng/settings.yml
+      - source: searxng-uwsgi
+        target: /etc/searxng/uwsgi.yml
     cap_drop:
       - ALL
     cap_add:
@@ -76,3 +79,9 @@ services:
     networks:
       default:
       web:
+
+configs:
+  searxng:
+    file: /home/ubuntu/searxng/settings.yml
+  searxng-uwsgi:
+    file: /home/ubuntu/searxng/uwsgi.yml
