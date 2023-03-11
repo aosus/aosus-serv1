@@ -16,8 +16,8 @@ piped.aosus.org {
 	import piped-global
 	# aosus settings
 	respond /robots.txt 200 {
-				body "User-agent: *
-	Disallow: /"
+		body "User-agent: *
+Disallow: /"
 	}    
 	header {
         X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"

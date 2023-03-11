@@ -77,8 +77,8 @@ search.aosus.org {
 
       # aosus settings
 	respond /robots.txt 200 {
-				body "User-agent: *
-	Disallow: /"
+		body "User-agent: *
+Disallow: /"
 	}      
       # SearXNG
       encode zstd gzip
@@ -90,4 +90,7 @@ search.aosus.org {
 
 proxy.search.aosus.org {
       reverse_proxy morty:8003
+	respond /robots.txt 200 {
+		body "User-agent: *
+Disallow: /"
 }

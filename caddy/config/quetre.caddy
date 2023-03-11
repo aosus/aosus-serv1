@@ -1,8 +1,8 @@
 quetre.aosus.org {
     reverse_proxy quetre:3000
 	respond /robots.txt 200 {
-				body "User-agent: *
-	Disallow: /"
+		body "User-agent: *
+Disallow: /"
 	}    
     header {
         X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
