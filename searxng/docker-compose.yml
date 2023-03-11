@@ -6,9 +6,8 @@ networks:
     external: true
 
 services:
-  searx:
+  searxng:
     image: searxng/searxng:latest
-    container_name: searx
     restart: unless-stopped
     depends_on:
       - redis
@@ -69,9 +68,6 @@ services:
     environment:
       - MORTY_KEY=+r8kg0DqSSMlXSK8QxCDlKsWQ7/W1WTq+9jy0+c/OHOo
       - MORTY_ADDRESS=0.0.0.0:8003
-      - VIRTUAL_HOST=proxy.search.aosus.org
-      - LETSENCRYPT_HOST=proxy.search.aosus.org
-      - VIRTUAL_PORT=8003
     logging:
       driver: none
     read_only: true

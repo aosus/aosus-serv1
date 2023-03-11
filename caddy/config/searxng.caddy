@@ -87,3 +87,7 @@ search.aosus.org {
             header_up X-Forwarded-Proto {http.request.scheme}
       }
 }
+
+proxy.search.aosus.org {
+      reverse_proxy morty:8003
+}
