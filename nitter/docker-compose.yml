@@ -1,0 +1,43 @@
+version: '3.3'
+networks:
+  web:
+    external: true
+  default:
+
+services:
+  nitter:
+    image: zedeus/nitter:latest-arm64
+    restart: always
+    container_name: nitter
+    depends_on:
+      - redis
+    configs:
+      - source: nitter
+        target: /src/nitter.conf
+    networks:
+      web:
+      default:
+    healthcheck:
+      test: wget -nv --tries=1 --spider http://127.0.0.1:8080/Jack/status/20 || exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 2
+
+  redis:
+    image: redis:6-alpine
+    restart: always
+    command: redis-server --save 60 1 --loglevel warning
+    volumes:
+      - nitter-redis:/data
+    healthcheck:
+      test: redis-cli ping
+      interval: 30s
+      timeout: 5s
+      retries: 2
+
+volumes:
+  nitter-redis:
+
+configs:
+  nitter:
+    file: /home/ubuntu/nitter/nitter.conf

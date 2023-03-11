@@ -1,0 +1,12 @@
+nitter.aosus.org {
+    reverse_proxy nitter:8080
+	respond /robots.txt 200 {
+		body "User-agent: *
+Disallow: /"
+	}    
+    header {
+        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+    }
+	encode zstd gzip
+}
