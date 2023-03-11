@@ -125,27 +125,47 @@ engines:
   - name: brave
     disabled: false
 
-  - name: bing images
-    disabled: true
-    engine: bing_images
-
-  - name: ddg definitions
-    engine: duckduckgo_definitions
-    disabled: false
-
-  - name: duckduckgo
-    engine: duckduckgo
-    disabled: true
-
   - name: lingva
     engine: lingva
     # set lingva instance in url, by default it will use the official instance
     url: https://lingva.aosus.org
 
-  - name: qwant
+  - name: ddg definitions
+    engine: duckduckgo_definitions
+    disabled: false
+
+#  disable useless image search sources
+  - name: unsplash
+    disabled: true
+
+  - name: artic
+    disabled: true
+
+  - name: deviantrt
+    disabled: true
+
+  - name: flickr
+    disabled: true
+
+  - name: openverse
+    disabled: true
+
+  - name: library of congress
+    disabled: true
+
+  - name: bing images
+    disabled: true
+    engine: bing_images
+
+  - name: qwant images
     engine: qwant
     disabled: true
 
-  - name: qwant images
+#  disable other search engines
+  - name: duckduckgo
+    engine: duckduckgo
+    disabled: true
+
+  - name: qwant
     engine: qwant
     disabled: true
