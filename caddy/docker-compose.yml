@@ -18,8 +18,11 @@ services:
       - /home/ubuntu/caddy/config:/etc/caddy/config:ro
       - data:/data
       - config:/config
+      - piped-proxy:/var/run/ytproxy
     networks:
       web:
+    volumes_from:
+      - piped-proxy:rw
 
 volumes:
   data:
