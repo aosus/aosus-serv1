@@ -134,6 +134,22 @@ engines:
     engine: duckduckgo_definitions
     disabled: false
 
+# refine File engines
+  - name: piratebay
+    disabled: true
+
+  - name: solidtorrents
+    disabled: true
+
+  - name: btdigg
+    disabled: true
+
+  - name: 1337x
+    disabled: false
+
+  - name: fdroid
+    disabled: false
+
 # enable other git sources
 
   - name: codeberg
@@ -152,7 +168,7 @@ engines:
   - name: artic
     disabled: true
 
-  - name: deviantrt
+  - name: deviantart
     disabled: true
 
   - name: flickr
