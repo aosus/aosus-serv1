@@ -32,4 +32,4 @@ jobs:
           upload_directory: true # upload docker directory
           docker_compose_directory: searxng # directory to upload
           compose_file_path: searxng/docker-compose.yml
-          args: -p searxng up -d
+          args: -p searxng up -d --remove-orphans

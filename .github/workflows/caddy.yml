@@ -32,4 +32,4 @@ jobs:
           upload_directory: true # upload docker directory
           docker_compose_directory: caddy # directory to upload
           compose_file_path: caddy/docker-compose.yml
-          args: -p caddy up -d
+          args: -p caddy up -d --remove-orphans

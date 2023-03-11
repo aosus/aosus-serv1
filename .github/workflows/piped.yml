@@ -32,4 +32,4 @@ jobs:
           upload_directory: true # upload docker directory
           docker_compose_directory: piped # directory to upload
           compose_file_path: piped/docker-compose.yml
-          args: -p piped up -d
+          args: -p piped up -d --remove-orphans
