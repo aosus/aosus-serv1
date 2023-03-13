@@ -1,0 +1,22 @@
+version: '3.3'
+
+networks:
+  web:
+    external: true
+
+services:
+  element:
+    image: vectorim/element-web:latest
+    container_name: element
+    restart: unless-stopped
+    # ports:
+    # - 8002:80
+    configs:
+      - source: element
+        target: /app/config.json
+    networks:
+      web:
+
+configs:
+  element:
+    file: /home/ubuntu/element/config.json

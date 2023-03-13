@@ -1,0 +1,49 @@
+{
+    "default_server_name": "matrix.aosus.org",
+    "brand": "Aosus Chat",
+    "branding": {
+        "welcomeBackgroundUrl": "https://aosus.org/wp-content/uploads/2021/10/aosus-background.webp",
+        "authFooterLinks": [{"text": "مجتمع أسس", "url": "https://aosus.org"}],
+        "authHeaderLogoUrl": "https://aosus.org/wp-content/uploads/2021/09/aosus-w-lwogores.png"
+
+    },
+    "hosting_signup_link": "https://element.io/matrix-services?utm_source=element-web&utm_medium=web",
+    "bug_report_endpoint_url": "https://element.io/bugreports/submit",
+    "showLabsSettings": true,
+    "disable_guests": true,
+    "default_theme": "dark",
+    "integrations_ui_url": "",
+    "roomDirectory": {
+        "servers": [
+            "matrix.org",
+            "tchncs.de",
+            "kde.org"
+        ]
+    },
+    "enable_presence_by_hs_url": {
+        "https://matrix.org": false,
+        "https://matrix-client.matrix.org": false,
+        "https://mozilla.org": false,
+        "https://tchncs.de": false
+    },
+
+    "terms_and_conditions_links": [
+        {
+            "url": "https://discourse.aosus.org/privacy",
+            "text": "سياسة الخصوصية"
+        },
+        {
+            "url": "https://discourse.aosus.org/tos",
+            "text": "شروط الخدمة"
+        }
+    ],
+    "features": {
+        "feature_spaces_metaspaces": true,
+        "feature_presence_in_room_list": true,
+        "feature_roomlist_preview_reactions_all": true,
+        "feature_bridge_state": true,
+        "feature_pinning": true,
+        "show_labs_settings": true
+    },
+    "UIFeature.urlPreviews": true
+}
