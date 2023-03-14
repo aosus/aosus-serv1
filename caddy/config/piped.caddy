@@ -12,7 +12,39 @@
 }
 
 piped.aosus.org {
+	# aosus settings
+	respond /robots.txt 200 {
+		body "User-agent: *
+Disallow: /"
+	}    
+	header {
+        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+    }
+	# end aosus settings
 	reverse_proxy pipedfrontend:80
+	import piped-global
+	encode zstd gzip
+}
+
+api.piped.aosus.org {
+	# aosus settings
+	respond /robots.txt 200 {
+		body "User-agent: *
+Disallow: /"
+	}    
+	header {
+        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+    }
+	# end aosus settings
+	reverse_proxy piped-nginx:80
+	import piped-global
+	encode zstd gzip
+}
+
+proxy.piped.aosus.org {
+	@ytproxy path /videoplayback* /api/v4/* /api/manifest/*
 	import piped-global
 	# aosus settings
 	respond /robots.txt 200 {
@@ -23,28 +55,7 @@ Disallow: /"
         X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
 		X-XSS-Protection "1; mode=block"
     }
-	encode zstd gzip
-}
-
-api.piped.aosus.org {
-	reverse_proxy piped-nginx:80
-	import piped-global
-	# aosus settings
-	respond /robots.txt 200 {
-				body "User-agent: *
-	Disallow: /"
-	}
-    header {
-        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
-		X-XSS-Protection "1; mode=block"
-    }
-	encode zstd gzip
-}
-
-proxy.piped.aosus.org {
-	@ytproxy path /videoplayback* /api/v4/* /api/manifest/*
-	import piped-global
-
+	# end aosus settings
 	route {
 		header @ytproxy {
 			Cache-Control private always
@@ -61,14 +72,5 @@ proxy.piped.aosus.org {
 			header_down -alt-svc
 		}
 	}
-	# aosus settings
-	respond /robots.txt 200 {
-				body "User-agent: *
-	Disallow: /"
-	}
-	header {
-        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
-		X-XSS-Protection "1; mode=block"
-    }
 	encode zstd gzip
 }
