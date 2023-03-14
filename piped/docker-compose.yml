@@ -9,6 +9,7 @@ services:
   pipedfrontend:
     image: 1337kavin/piped-frontend:latest
     restart: always
+    container_name: pipedfrontend
     depends_on:
       - piped
     entrypoint: ash -c 'sed -i s/pipedapi.kavin.rocks/api.piped.aosus.org/g /usr/share/nginx/html/assets/* && /docker-entrypoint.sh && nginx -g "daemon off;"'
@@ -26,9 +27,11 @@ services:
 
   piped:
     image: 1337kavin/piped:latest
+    container_name: piped
     restart: always
-    volumes:
-      - /home/ubuntu/piped/config/config.properties:/app/config.properties:ro
+    configs:
+      - source: piped
+        target: /app/config.properties
     depends_on:
       - postgres
       
@@ -59,6 +62,7 @@ services:
 
   postgres:
     image: postgres:14-alpine
+    container_name: piped-postgres
     restart: always
     volumes:
       - /home/ubuntu/piped/postgresql:/var/lib/postgresql/data
@@ -82,3 +86,5 @@ configs:
     file: /home/ubuntu/piped/config/pipedfrontend.conf
   ytproxy:
     file: /home/ubuntu/piped/config/ytproxy.conf
+  piped: 
+    file: /home/ubuntu/piped/config/config.properties
