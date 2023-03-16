@@ -26,6 +26,8 @@ jobs:
 
       - name: Start Deployment
         uses: aosus/docker-compose-gitops-action@v1
+        env:
+          EMAIL: ${{ secrets.caddy_email }}
         with:
           remote_docker_host: ${{ secrets.server_address }}
           tailscale_ssh: true # no need for manual private and public keys
