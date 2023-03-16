@@ -87,4 +87,4 @@ configs:
   ytproxy:
     file: /home/ubuntu/piped/config/ytproxy.conf
   piped: 
-    file: /home/ubuntu/piped/config/config.properties
+    file: /home/ubuntu/piped/config.properties
