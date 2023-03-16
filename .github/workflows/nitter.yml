@@ -24,6 +24,12 @@ jobs:
           hostname: Github-actions
           version: 1.36.2
 
+      - name: Add secrets to config files
+        env:
+          NITTER_HMACKEY: ${{ secrets.nitter_hmackey }}
+        run: |
+          sed -i "s/(nitter_hmackey)/$NITTER_HMACKEY/g" $GITHUB_WORKSPACE/nitter/nitter.conf
+
       - name: Start Deployment
         uses: aosus/docker-compose-gitops-action@v1
         with:

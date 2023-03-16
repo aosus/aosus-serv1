@@ -24,6 +24,12 @@ jobs:
           hostname: Github-actions
           version: 1.36.2
 
+      - name: Add secrets to config files
+        env:
+          SEARXNG_SECRET_KEY: ${{ secrets.searxng_secret_key }}
+        run: |
+          sed -i "s/(searxng_secret_key)/$SEARXNG_SECRET_KEY/g" $GITHUB_WORKSPACE/searxng/settings.yml
+
       - name: Start Deployment
         uses: aosus/docker-compose-gitops-action@v1
         with:
