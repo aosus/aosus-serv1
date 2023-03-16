@@ -64,7 +64,7 @@ ui:
 #
 # result_proxy:
 #     url : https://proxy.search.aosus.org
-#     key : !!binary "+r8kg0DqSSMlXSK8QxCDlKsWQ7/W1WTq+9jy0+c/OHOo"
+#     key : !!binary ""
 #     proxify_results: true
 
 #   # [true|false] enable the "proxy" button next to each result

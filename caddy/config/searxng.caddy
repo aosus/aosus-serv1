@@ -87,10 +87,3 @@ Disallow: /"
             header_up X-Forwarded-Proto {http.request.scheme}
       }
 }
-
-proxy.search.aosus.org {
-      reverse_proxy morty:8003
-	respond /robots.txt 200 {
-		body "User-agent: *
-Disallow: /"
-}
