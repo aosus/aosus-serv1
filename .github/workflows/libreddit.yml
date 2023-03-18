@@ -25,7 +25,7 @@ jobs:
           version: 1.36.2
 
       - name: Start Deployment
-        uses: aosus/docker-compose-gitops-action@v1
+        uses: FarisZR/docker-compose-gitops-action@v1
         with:
           remote_docker_host: ${{ secrets.server_address }}
           tailscale_ssh: true # no need for manual private and public keys

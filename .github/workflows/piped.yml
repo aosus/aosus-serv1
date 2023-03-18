@@ -31,7 +31,7 @@ jobs:
           sed -i "s/(piped_postgres_password)/$POSTGRES_PASSWORD/g" $GITHUB_WORKSPACE/piped/config.properties
 
       - name: Start Deployment
-        uses: aosus/docker-compose-gitops-action@v1
+        uses: FarisZR/docker-compose-gitops-action@v1
         env:
           POSTGRES_PASSWORD: ${{ secrets.piped_postgres_password }}
         with:
