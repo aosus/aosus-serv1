@@ -108,7 +108,7 @@ hostname_replace:
   '(.*\.)?reddit\.com$': "libreddit.aosus.org"
   '(.*\.)?redd\.it$': "libreddit.aosus.org"
   '(www\.)?twitter\.com$': "nitter.aosus.org"
-  '(www\.)?medium\.com$': "scribe.aosus.org"
+  '([^.\s]+\.)?medium\.com$': "scribe.aosus.org"
 
   # '(www\.)?instagram\.com/p/$': 'bibliogram.aosus.org/p'
   # '(www\.)?instagram\.com': 'bibliogram.aosus.org/u'
