@@ -6,7 +6,7 @@ networks:
 
 services:
   lingva:
-    image: ghcr.io/aosus/lingva-translate:main
+    image: oci.aosus.org/aosus/lingva-translate:main
     expose:
       - 3000
     environment:
