@@ -4,7 +4,8 @@
     "config:base"
   ],
   "automergeSchedule": [
-    "after 9PM, before 10PM"
+    "after 9pm",
+    "before 10pm"
   ],
   "docker": {
     "pinDigests": true
