@@ -8,6 +8,7 @@
     "before 10pm"
   ],
   "docker": {
+    "automerge": true,
     "pinDigests": true
   }
 }
