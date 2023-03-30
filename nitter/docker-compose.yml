@@ -6,7 +6,7 @@ networks:
 
 services:
   nitter:
-    image: zedeus/nitter:latest-arm64
+    image: zedeus/nitter:latest-arm64@sha256:d98469777b5334218e74afd8298d6b268dc9342eddc7511b3e32f3e4d0440dd3
     restart: always
     container_name: nitter
     depends_on:
@@ -24,7 +24,7 @@ services:
       retries: 2
 
   redis:
-    image: redis:6-alpine
+    image: redis:6-alpine@sha256:edddbcad5a41d58df2f142d68439922f1860ea902903d016257337c3342f30fc
     restart: always
     command: redis-server --save 60 1 --loglevel warning
     volumes:

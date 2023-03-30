@@ -7,7 +7,7 @@ networks:
 
 services:
   pipedfrontend:
-    image: 1337kavin/piped-frontend:latest
+    image: 1337kavin/piped-frontend:latest@sha256:8fadb210586222d115236f8bc1ee12f22f39841b9a5016b1b975fbaaff71418c
     restart: always
     container_name: pipedfrontend
     depends_on:
@@ -17,7 +17,7 @@ services:
       web:
 
   piped-proxy:
-    image: 1337kavin/piped-proxy:latest
+    image: 1337kavin/piped-proxy:latest@sha256:8f24d211c42fff109fcaa56ef2fad17e87a7a7820f0da2608f438bc4fe845d0d
     container_name: piped-proxy
     restart: always
     environment:
@@ -26,7 +26,7 @@ services:
       - piped-proxy:/app/socket
 
   piped:
-    image: 1337kavin/piped:latest
+    image: 1337kavin/piped:latest@sha256:f5285b473d90faed79fa1fd49bcfe010cdbc6f3f8088170a0e6985a076b73ba0
     container_name: piped
     restart: always
     configs:
@@ -36,7 +36,7 @@ services:
       - postgres
       
   nginx:
-    image: nginx:mainline-alpine
+    image: nginx:mainline-alpine@sha256:c94a22b036afa972426b82d5b0a49c959786005b4f6f81ac7467ca5538d0158f
     restart: always
     container_name: piped-nginx
     volumes:
@@ -61,7 +61,7 @@ services:
       - web
 
   postgres:
-    image: postgres:14-alpine
+    image: postgres:14-alpine@sha256:f56d60bbff317706f8264d631a45526f8f1c1bb7cffaa09f33582cd894cd0ca3
     container_name: piped-postgres
     restart: always
     volumes:

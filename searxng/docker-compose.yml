@@ -7,7 +7,7 @@ networks:
 
 services:
   searxng:
-    image: searxng/searxng:2023.3.29-d179b62c
+    image: searxng/searxng:2023.3.29-d179b62c@sha256:43546b083397d07b89c9dbf97e27ef4edf5f0a0b0afba34f4d33a24d030d717f
     restart: unless-stopped
     depends_on:
       - redis
@@ -45,7 +45,7 @@ services:
 
   redis:
     container_name: redis
-    image: "redis:7.0.10-alpine"
+    image: "redis:7.0.10-alpine@sha256:221f7fa5b4c563971358755893263d64b0b52e9798f6320f2898be499fb3b6b6"
     command: redis-server --save "" --appendonly "no"
     restart: always
     tmpfs:
