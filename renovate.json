@@ -9,6 +9,10 @@
   ],
   "docker": {
     "automerge": true,
-    "pinDigests": true
+    "pinDigests": true,
+    "labels": ["Container updates"]
+  },
+  "github-actions": {
+    "labels": ["Action updates"]
   }
 }
