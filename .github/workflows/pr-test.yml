@@ -28,6 +28,8 @@ jobs:
             **/docker-compose.yaml
 
       - name: Test docker-compose files
+        env:
+          DOCKER_DEFAULT_PLATFORM: aarch64
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "Testing $file"
