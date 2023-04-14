@@ -22,7 +22,7 @@ jobs:
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
           hostname: Github-actions
-          version: 1.36.2
+          version: ${{ vars.TAILSCALE_VERSION }}
 
       - name: Start Deployment
         uses: FarisZR/docker-compose-gitops-action@v1
