@@ -6,7 +6,7 @@ networks:
 
 services:
   quetre:
-    image: oci.fariszr.com/fariszr/quetre:latest@sha256:597c0115cb65581927900bbbf74389913127576c00a3587f79edaa70d1ff1b75
+    image: oci.fariszr.com/fariszr/quetre:latest@sha256:ecd53b84fa6aa6fd1a890c5d0ac7893bce9d95d80500cf9d807a0d9f30994674
     expose:
       - 3000
     restart: always
