@@ -1,0 +1,18 @@
+networks:
+  web:
+    external: true
+
+services:
+  rimgo:
+    image: codeberg.org/video-prize-ranch/rimgo:latest@sha256:ccf724c11ac52e005b76198b6ca8415be1a1d19cc1391af36e6254b0441e483e # Official image
+    # ports:
+    #   - 3000:3000
+    restart: unless-stopped
+    user: 65534:65534 # equivalent to `nobody`
+    read_only: true
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - ALL
+    networks:
+      - web

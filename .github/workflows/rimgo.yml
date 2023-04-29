@@ -1,0 +1,33 @@
+name: deploy-rimgo
+
+on:
+  push:
+    paths:
+      - '.github/workflows/rimgo.yml'
+      - 'rimgo/**'
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Tailscale
+        uses: tailscale/github-action@ce41a99162202a647a4b24c30c558a567b926709
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+          hostname: Github-actions
+          version: ${{ vars.TAILSCALE_VERSION }}
+
+      - name: Start Deployment
+        uses: FarisZR/docker-compose-gitops-action@v1
+        with:
+          remote_docker_host: ${{ secrets.server_address }}
+          tailscale_ssh: true # no need for manual private and public keys
+          compose_file_path: rimgo/docker-compose.yml
+          args: -p rimgo up -d --remove-orphans

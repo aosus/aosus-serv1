@@ -1,0 +1,12 @@
+rimgo.aosus.link {
+	encode zstd gzip
+	reverse_proxy rimgo:3000
+	respond /robots.txt 200 {
+		body "User-agent: *
+Disallow: /"
+	}
+	header {
+		X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+	}
+}
