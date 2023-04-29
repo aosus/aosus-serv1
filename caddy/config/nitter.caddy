@@ -1,4 +1,9 @@
 nitter.aosus.org {
+    redir https://nitter.aosus.link{uri} 301
+    header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
+}
+
+nitter.aosus.link {
     reverse_proxy nitter:8080
 	respond /robots.txt 200 {
 		body "User-agent: *
@@ -9,8 +14,4 @@ Disallow: /"
 		X-XSS-Protection "1; mode=block"
     }
 	encode zstd gzip
-}
-
-mobile.nitter.aosus.org {
-	redir https://nitter.aosus.org{uri} permanent
 }
