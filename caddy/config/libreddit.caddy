@@ -1,4 +1,9 @@
 libreddit.aosus.org {
+    redir https://libreddit.aosus.link{uri} 301
+    header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
+}
+
+libreddit.aosus.link {
     encode zstd gzip
     reverse_proxy libreddit:8080
 	respond /robots.txt 200 {

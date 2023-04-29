@@ -1,4 +1,9 @@
 search.aosus.org {
+    redir https://search.aosus.link{uri} 301
+    header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
+}
+
+search.aosus.link {
       @api {
             path /config
             path /health

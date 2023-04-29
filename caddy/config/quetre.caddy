@@ -1,4 +1,9 @@
 quetre.aosus.org {
+    redir https://quetre.aosus.link{uri} 301
+    header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
+}
+
+quetre.aosus.link {
     reverse_proxy quetre:3000
 	respond /robots.txt 200 {
 		body "User-agent: *
