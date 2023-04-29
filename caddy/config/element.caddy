@@ -1,4 +1,4 @@
-element.aosus.org {
+element.aosus.link {
     reverse_proxy element:80
 	respond /robots.txt 200 {
 		body "User-agent: *
