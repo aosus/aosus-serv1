@@ -27,7 +27,7 @@ server:
   # instance's enviroment (make buildenv)
   port: 8080
   bind_address: "0.0.0.0"
-  base_url: "https://search.aosus.org" # Possible values: false or "https://example.org/location".
+  base_url: "https://search.aosus.link" # Possible values: false or "https://example.org/location".
   limiter: true # rate limit the number of request on the instance, block some bots
   secret_key: "(searxng_secret_key)" # change this!
   # Proxying image results through searx
@@ -102,13 +102,13 @@ default_doi_resolver: "oadoi.org"
 
 # Configuration of the "Hostname replace" plugin:
 hostname_replace:
-  '(.*\.)?youtube\.com$': "piped.aosus.org"
-  '(.*\.)?youtu\.be$': "piped.aosus.org"
-  '(.*\.)?youtube-noocookie\.com$': "piped.aosus.org"
-  '(.*\.)?reddit\.com$': "libreddit.aosus.org"
-  '(.*\.)?redd\.it$': "libreddit.aosus.org"
-  '(www\.)?twitter\.com$': "nitter.aosus.org"
-  '([^.\s]+\.)?medium\.com$': "scribe.aosus.org"
+  '(.*\.)?youtube\.com$': "piped.aosus.link"
+  '(.*\.)?youtu\.be$': "piped.aosus.link"
+  '(.*\.)?youtube-noocookie\.com$': "piped.aosus.link"
+  '(.*\.)?reddit\.com$': "libreddit.aosus.link"
+  '(.*\.)?redd\.it$': "libreddit.aosus.link"
+  '(www\.)?twitter\.com$': "nitter.aosus.link"
+  '([^.\s]+\.)?medium\.com$': "scribe.aosus.link"
   '(i\.)?imgur\.com$': "rimgo.aosus.link"
   # '(www\.)?instagram\.com/p/$': 'bibliogram.aosus.org/p'
   # '(www\.)?instagram\.com': 'bibliogram.aosus.org/u'
@@ -128,7 +128,7 @@ engines:
   - name: lingva
     engine: lingva
     # set lingva instance in url, by default it will use the official instance
-    url: https://lingva.aosus.org
+    url: https://lingva.aosus.link
 
   - name: ddg definitions
     engine: duckduckgo_definitions
