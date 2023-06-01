@@ -6,7 +6,7 @@ networks:
 
 services:
   libreddit:
-    image: libreddit/libreddit:arm@sha256:31f4b1a336b6584208591fb750167ce7f21f4eed071fdfdd80ccd65596366990
+    image: libreddit/libreddit:arm@sha256:1e4c87437f4d791b94059e00fb993ff4e4ac1855fbbf2548af1be79bc78a33ec
     restart: always
     networks:
       web:
