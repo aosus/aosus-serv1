@@ -6,7 +6,7 @@ networks:
 
 services:
   caddy:
-    image: caddy:2.6.4-alpine@sha256:4dfec6c3b22c36b63ea4a3633c7cdbdaa9926d1324c27db2b0e2b70ef9cd105a
+    image: caddy:2.6.4-alpine@sha256:3bba1ffdf321ffc782f23ce2258b59ebfcec677f60373996c26f720beceff5c3
     container_name: caddy
     restart: always
     ports:
