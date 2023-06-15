@@ -24,7 +24,7 @@ services:
       retries: 2
 
   redis:
-    image: redis:7-alpine@sha256:1f27b9eb680ffcf6c68966c0d5f578bb1b030ca7cd8ec4e758c429e7f72005a0
+    image: redis:7-alpine@sha256:df04b8d1cc6e9708b5e0de9b4254df4b9b97f1c651ab7f9448be25a94b5f0f30
     restart: always
     command: redis-server --save 60 1 --loglevel warning
     volumes:
