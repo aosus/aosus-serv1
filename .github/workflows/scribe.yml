@@ -1,0 +1,38 @@
+name: deploy-scribe
+
+on:
+  push:
+    paths:
+      - '.github/workflows/scribe.yml'
+      - 'scribe/**'
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: scribe
+      url: https://scribe.aosus.link
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Tailscale
+        uses: tailscale/github-action@ce41a99162202a647a4b24c30c558a567b926709
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+          hostname: Github-actions
+          version: ${{ vars.TAILSCALE_VERSION }}
+
+      - name: Start Deployment
+        uses: FarisZR/docker-compose-gitops-action@v1
+        env:
+          SECRET_KEY_BASE: ${{ secrets.scribe_secret_key_base }}
+        with:
+          remote_docker_host: ${{ secrets.server_address }}
+          tailscale_ssh: true # no need for manual private and public keys
+          compose_file_path: scribe/docker-compose.yml
+          args: -p scribe up -d --remove-orphans

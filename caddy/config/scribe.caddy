@@ -1,0 +1,17 @@
+scribe.aosus.org {
+	redir https://scribe.aosus.link{uri} 301
+	header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
+}
+
+scribe.aosus.link {
+	reverse_proxy scribe:8080
+	respond /robots.txt 200 {
+		body "User-agent: *
+Disallow: /"
+	}
+	header {
+		X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+	}
+	encode zstd gzip
+}
