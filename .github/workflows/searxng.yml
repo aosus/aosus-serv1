@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
 
       - name: Tailscale
-        uses: tailscale/github-action@ce41a99162202a647a4b24c30c558a567b926709
+        uses: tailscale/github-action@65cdd9a05d7ebe4ef4e8c70141f5d84e1cd4cab4
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
           hostname: Github-actions
