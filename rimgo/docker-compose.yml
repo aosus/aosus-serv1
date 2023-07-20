@@ -4,7 +4,7 @@ networks:
 
 services:
   rimgo:
-    image: codeberg.org/video-prize-ranch/rimgo:latest@sha256:fa2e287dc81395eec29b231c123fcc18587979235753518dab2e0a0b0baaa2c3 # Official image
+    image: codeberg.org/video-prize-ranch/rimgo:latest@sha256:84e50bc408401133a07d99df43167445c1bbb4f9ec2e6aff3e758a671e503edc # Official image
     # ports:
     #   - 3000:3000
     restart: unless-stopped
