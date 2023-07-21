@@ -6,7 +6,7 @@ networks:
 
 services:
   nitter:
-    image: zedeus/nitter:latest-arm64@sha256:8b8ddb0bc160a440eecf6c72e17e014586ece74670168a6f2a3d1de1fca82c34
+    image: zedeus/nitter:latest-arm64@sha256:6e9762f4306eceb286e5edfbbf18afad47f9d6d808b4d7d698a7356f17f63746
     restart: always
     container_name: nitter
     depends_on:
