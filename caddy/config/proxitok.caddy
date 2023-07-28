@@ -5,7 +5,7 @@ proxitok.aosus.org {
 
 proxitok.aosus.link {
     encode zstd gzip
-    reverse_proxy proxitok:80
+    reverse_proxy proxitok:8080
 	respond /robots.txt 200 {
 		body "User-agent: *
 Disallow: /"
