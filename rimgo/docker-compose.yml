@@ -7,6 +7,13 @@ services:
     image: codeberg.org/video-prize-ranch/rimgo:latest@sha256:d2de37d255951fd9cde664aa60a84b87c4399d8bdcfe969af0daec1e035d9d8c # Official image
     # ports:
     #   - 3000:3000
+    environment:
+      PRIVACY_COUNTRY: Saudi Arabia
+      PRIVACY_PROVIDER: Oracle Cloud
+      PRIVACY_DIAGNOSTICS: yes
+      PRIVACY_IP: yes
+      PRIVACY_URL: yes
+      PRIVACY_DEVICE: yes
     restart: unless-stopped
     user: 65534:65534 # equivalent to `nobody`
     read_only: true
