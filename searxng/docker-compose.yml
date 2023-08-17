@@ -45,7 +45,7 @@ services:
 
   redis:
     container_name: redis
-    image: "redis:7.2.0-alpine@sha256:5ac36550b2ffa467671c8deaaf9f4f5f5d954a70801c559b3c118c09c66268d0"
+    image: "redis:7.2.0-alpine@sha256:fd5de2340bc46cbc2241975ab027797c350dec6fd86349e3ac384e3a41be6fee"
     command: redis-server --save "" --appendonly "no"
     restart: always
     tmpfs:
