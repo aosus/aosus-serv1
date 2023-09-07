@@ -37,7 +37,7 @@ services:
 
   redis:
     container_name: proxitok-redis
-    image: redis:7-alpine@sha256:f0ece8ab11c06a14af02879161d0b9f6790c5aeee0fa9432a1808c40011b1b16
+    image: redis:7-alpine@sha256:ef3296cb1b3a7eb40f2a992a398777a1c0b5b21df44f1a5bef84067f772daf54
     command: redis-server --save 60 1 --loglevel warning
     restart: always
     user: nobody
