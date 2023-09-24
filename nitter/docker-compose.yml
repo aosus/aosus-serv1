@@ -3,6 +3,7 @@ networks:
   web:
     external: true
   default:
+    enable_ipv6: true
 
 services:
   nitter:
