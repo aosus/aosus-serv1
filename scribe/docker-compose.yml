@@ -5,7 +5,7 @@ networks:
 services:
   scribe:
     container_name: scribe
-    image: oci.fariszr.com/fariszr/scribe:latest@sha256:182731ffd31ae39f2c0d8ea23e56fc35569a07323fe85d235b7467452e78a043
+    image: oci.fariszr.com/fariszr/scribe:latest@sha256:e6fd9eaf052e6801e4ad3d45b59187d8c0a125109dafd2e462d03fedb4249874
     restart: always
     environment:
       - APP_DOMAIN=scribe.aosus.link
