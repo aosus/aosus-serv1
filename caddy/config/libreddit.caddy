@@ -5,7 +5,7 @@ libreddit.aosus.org {
 
 libreddit.aosus.link {
     encode zstd gzip
-    reverse_proxy warp-libreddit:8080
+    reverse_proxy wgcf-libreddit:8080
 	respond /robots.txt 200 {
 		body "User-agent: *
 Disallow: /"
