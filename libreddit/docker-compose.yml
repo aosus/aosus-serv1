@@ -6,7 +6,7 @@ networks:
 
 services:
   wgcf-libreddit:
-    image: neilpang/wgcf-docker:latest
+    image: neilpang/wgcf-docker:latest@sha256:673f737597e7d391bc4e9ddd2c120165b9900b40ddfc99f417d809b6b204463c
     restart: always
     volumes:
       - wgcf:/wgcf
