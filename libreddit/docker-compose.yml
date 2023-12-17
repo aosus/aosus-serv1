@@ -5,8 +5,28 @@ networks:
     external: true
 
 services:
+  warp-libreddit:
+    image: caomingjun/warp
+    restart: always
+    # ports:
+    #   - 8080:8080 # libreddit
+    environment:
+      - WARP_SLEEP=2
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+      - net.ipv4.conf.all.src_valid_mark=1
+    volumes:
+      - data:/var/lib/cloudflare-warp
+    networks: 
+      - web
+
   libreddit:
     image: libreddit/libreddit:arm@sha256:1e4c87437f4d791b94059e00fb993ff4e4ac1855fbbf2548af1be79bc78a33ec
     restart: always
-    networks:
-      web:
+    network_mode: "service:warp-libreddit"
+
+
+volumes:
+  data:
