@@ -6,7 +6,7 @@ networks:
 
 services:
   element:
-    image: vectorim/element-web:v1.11.51@sha256:cb6864a0a2132160b1301f64fcf4d0743acef53f076314c0b6f1d675f42a1433
+    image: vectorim/element-web:v1.11.52@sha256:dbf919728e10b42c3f0a1b8dad4abd9744926553cc91ddc5f6ab55c27c8fc69d
     container_name: element
     restart: unless-stopped
     # ports:
