@@ -35,7 +35,7 @@ services:
       - /home/ubuntu/nitter/create_guest_account.sh:/create_guest_account.sh:ro
     labels:
       ofelia.job-local.create_guest_accounts.schedule: "@every 12h"
-      ofelia.job-local.create_guest_accounts.command: "apk add curl jq && sh /create_guest_account.sh"
+      ofelia.job-local.create_guest_accounts.command: "apk add curl jq && sh /create_guest_account.sh /src/guest_accounts.json"
 
   redis:
     image: redis:7-alpine@sha256:090276da2603db19b154602c374f505d94c10ea57e9749fc3e68e955284bf0fd

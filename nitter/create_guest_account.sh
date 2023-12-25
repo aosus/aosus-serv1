@@ -19,7 +19,7 @@ new_entry=$(curl -s -XPOST 'https://api.twitter.com/1.1/onboarding/task.json' \
           -d "{\"flow_token\":\"${flow_token}\",\"subtask_inputs\":[{\"open_link\":{\"link\":\"next_link\"},\"subtask_id\":\"NextTaskOpenLink\"}]}" | jq -c -r '.subtasks[0]|if(.open_account) then {oauth_token: .open_account.oauth_token, oauth_token_secret: .open_account.oauth_token_secret} else empty end')
 
 # Define the path to your JSON file
-json_file="/src/guest_accounts.json"
+json_file="$1"
 
 # Add the new entry to the JSON array in the specified file
 if [[ -n "$new_entry" && "$new_entry" != "null" ]]; then
