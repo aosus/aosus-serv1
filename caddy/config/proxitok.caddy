@@ -10,6 +10,13 @@ proxitok.aosus.link {
 		body "User-agent: *
 Disallow: /"
 	}    
+	handle_errors {
+		# handle_errors is only triggerd on erros from Caddy and not the proxy, that's why we don't specifiy any errors here.
+		rewrite * /proxy_error_page.html
+		file_server {
+			root /srv/
+		}
+	}
     header {
         X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
 		X-XSS-Protection "1; mode=block"

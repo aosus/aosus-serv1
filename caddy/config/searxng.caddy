@@ -84,7 +84,14 @@ search.aosus.link {
 	respond /robots.txt 200 {
 		body "User-agent: *
 Disallow: /"
-	}      
+	}    
+	handle_errors {
+		# handle_errors is only triggerd on erros from Caddy and not the proxy, that's why we don't specifiy any errors here.
+		rewrite * /proxy_error_page.html
+		file_server {
+			root /srv/
+		}
+	}
       # SearXNG
       encode zstd gzip
       reverse_proxy searxng:8080 {
