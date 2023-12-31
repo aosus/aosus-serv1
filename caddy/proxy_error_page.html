@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ar">
+
+<head>
+    <div dir="RTL">
+        <meta charset="utf-8">
+        <meta http-equiv="refresh" content="60">
+        <title>هذه الخدمة غير متوفرة حاليا</title>
+        <style>
+            .center {
+                display: flex;
+                justify-content: center;
+            }
+
+            .container {
+                background: #ececec;
+                max-width: 500px;
+                padding: 50px 50px 30px 50px;
+                margin-top: 50px;
+                border-radius: 20px; /* Rounded corners */
+            }
+
+            .title {
+                padding-top: 20px;
+            }
+
+            h1,
+            p {
+                font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .spinner {
+                animation: spin 2s infinite linear;
+                height: 30px;
+                width: 30px;
+                border: 4px solid #919191;
+                border-right-color: transparent;
+                border-radius: 50%;
+                margin-top: 20px;
+            }
+
+            /* Center the buttons */
+            .button-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Style the buttons */
+            .button {
+                border: none; /* Remove border */
+                color: white; /* White text */
+                padding: 15px 32px; /* Add some padding */
+                text-align: center; /* Centered text */
+                text-decoration: none; /* Remove underline */
+                display: inline-block; /* Inline element */
+                font-size: 16px; /* Set a font size */
+                border-radius: 30px; /* Rounded corners */
+                box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26); /* Add a shadow */
+                transition: 0.3s; /* Add a transition effect */
+            }
+
+            /* Change the button color on hover */
+            .button:hover {
+                box-shadow: 0 4px 10px 0 rgba(0,0,0,0.37); /* Bigger shadow */
+            }
+
+            /* Green button */
+            .green {
+                background-color: green; /* Green background */
+            }
+
+            /* Green button on hover */
+            .green:hover {
+                background-color: #66bb6a; /* Lighter green */
+            }
+
+            /* Cyan button */
+            .cyan {
+                background-color: #0088CC; /* Cyan background */
+            }
+
+            /* Cyan button on hover */
+            .cyan:hover {
+                background-color: #00aaff; /* Lighter cyan */
+            }
+
+            /* Add some margin between the buttons */
+            .button + .button {
+                margin: 10px;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="center">
+        <div class="container">
+            <div class="center">
+                <img src="https://cdn-cf-discourse.aosus.org/original/2X/c/c3ea74b68d4f80fbf949a0b6989e44a1b33dce29.svg"
+                    alt="Discourse logo" width="244" height="66">
+            </div>
+            <h1 class="title">هذه الخدمة غير متوفرة حاليا&hellip;</h1>
+            <div class="center">
+                <p>ربما يتم تحديثها او تواجه صعوبات تقنية <br />
+                تأكد من حالة خدمات مجتمع عبر الزر بالاسفل
+                </p>
+            </div>
+            <div class="button-container">
+                <a href="https://status.aosus.org" class="button green">حالة خدمات أسس</a>
+                <a href="https://t.me/aosus" class="button cyan"> أسس على التيليجرام</a>
+            </div>
+            <div class="center">
+              <p>الصفحة يتم تحديثها تلقائيا كل 60 ثانية</p>
+            </div>
+            <div class="center">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
