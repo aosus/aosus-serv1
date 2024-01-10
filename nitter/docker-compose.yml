@@ -38,7 +38,7 @@ services:
       ofelia.job-local.create_guest_accounts.command: '/bin/sh -c "apk add curl jq && sh /create_guest_account.sh /src/guest_accounts.json && docker restart nitter"'
 
   redis:
-    image: redis:7-alpine@sha256:090276da2603db19b154602c374f505d94c10ea57e9749fc3e68e955284bf0fd
+    image: redis:7-alpine@sha256:995e6eaab954e92cadf1a0bb1eab71ae3baae8e02ea4354fd8aa136a61e42247
     restart: always
     command: redis-server --save 60 1 --loglevel warning
     volumes:
