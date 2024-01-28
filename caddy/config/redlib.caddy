@@ -1,15 +1,15 @@
 libreddit.aosus.link {
-    redir https://redlib.aosus.link{uri} 301
-    header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
+	redir https://redlib.aosus.link{uri} 301
+	header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
 }
 
 redlib.aosus.link {
-    encode zstd gzip
-    reverse_proxy redlib:8080
+	encode zstd gzip
+	reverse_proxy redlib:8080
 	respond /robots.txt 200 {
 		body "User-agent: *
 Disallow: /"
-	}    
+	}
 	handle_errors {
 		# handle_errors is only triggerd on erros from Caddy and not the proxy, that's why we don't specifiy any errors here.
 		rewrite * /proxy_error_page.html
@@ -17,8 +17,8 @@ Disallow: /"
 			root /srv/
 		}
 	}
-    header {
-        X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+	header {
+		X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
 		X-XSS-Protection "1; mode=block"
-    }
+	}
 }
