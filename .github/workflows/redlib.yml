@@ -1,10 +1,10 @@
-name: deploy-libreddit
+name: deploy-redlib
 
 on:
   push:
     paths:
-      - '.github/workflows/libreddit.yml'
-      - 'libreddit/**'
+      - '.github/workflows/redlib.yml'
+      - 'redlib/**'
     branches: [main]
   workflow_dispatch:
 
@@ -31,5 +31,5 @@ jobs:
         with:
           remote_docker_host: ${{ secrets.server_address }}
           tailscale_ssh: true # no need for manual private and public keys
-          compose_file_path: libreddit/docker-compose.yml
-          args: -p libreddit up -d --remove-orphans
+          compose_file_path: redlib/docker-compose.yml
+          args: -p redlib up -d --remove-orphans
