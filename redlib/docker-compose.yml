@@ -1,0 +1,13 @@
+networks:
+  web:
+    external: true
+
+services:
+  redlib:
+    image: quay.io/redlib/redlib:latest-arm
+    restart: always
+    environment:
+      - REDLIB_ROBOTS_DISABLE_INDEXING=on
+      - REDLIB_DEFAULT_USE_HLS=on
+    networks:
+      - web
