@@ -27,7 +27,7 @@ services:
       retries: 2
 # fetch new guest accounts every 12h
   ofelia:
-    image: mcuadros/ofelia:latest@sha256:269121628498e173c639de4a3f351237b41549a742f76c823a1bb10095b75fc8
+    image: mcuadros/ofelia:latest@sha256:1f61595a1591be006a80de3e057ac667def77b5e18b1148b33008d2b156e1615
     command: daemon --docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
