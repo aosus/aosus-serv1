@@ -1,4 +1,4 @@
-libreddit.aosus.link {
+libreddit.aosus.link, libreddit.aosus.org {
 	redir https://redlib.aosus.link{uri} 301
 	header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
 }
