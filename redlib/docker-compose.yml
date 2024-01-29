@@ -4,7 +4,7 @@ networks:
 
 services:
   redlib:
-    image: quay.io/redlib/redlib:latest-arm@sha256:637f9e56a18585b951087eecc8bb8deef850279024d4ac05e6c974725d2758f3
+    image: quay.io/redlib/redlib:latest-arm@sha256:4e05b9fb3bc7c5bd7d96166bb60f75fbdab0e91ed6f5c3a524659edb049a4125
     restart: always
     environment:
       - REDLIB_ROBOTS_DISABLE_INDEXING=on
