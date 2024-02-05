@@ -4,6 +4,7 @@ networks:
 
 services:
   redlib:
+    container_name: redlib
     image: quay.io/redlib/redlib:latest-arm@sha256:de0a36a21dbe421be354047587f59f343df7907feaa60bbaa3236316fde53593
     restart: always
     environment:
