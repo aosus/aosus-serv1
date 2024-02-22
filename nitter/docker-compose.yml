@@ -7,7 +7,7 @@ networks:
 
 services:
   nitter:
-    image: oci.fariszr.com/fariszr/nitter:latest@sha256:fea297076f8d7500c0514d81bb2b196104a3b4ef3dc22222262fcab9b5c8d6d0
+    image: oci.fariszr.com/fariszr/nitter:latest@sha256:49b4e1d54244eb4ffdff9932351dc5c89920d92d80862bef880a651599fa7b62
     restart: always
     container_name: nitter
     depends_on:
