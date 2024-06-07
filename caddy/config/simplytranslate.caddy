@@ -1,9 +1,4 @@
-lingva.aosus.org {
-    redir https://simplytranslate.aosus.link{uri} 301
-    header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
-}
-
-lingva.aosus.link {
+lingva.aosus.link, lingva.aosus.org {
     redir https://simplytranslate.aosus.link{uri} 301
     header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
 }
