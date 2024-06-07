@@ -1,10 +1,10 @@
-name: deploy-lingva
+name: deploy-simplytranslate
 
 on:
   push:
     paths:
-      - '.github/workflows/workflows/lingva.yml'
-      - 'lingva/**'
+      - '.github/workflows/workflows/simplytranslate.yml'
+      - 'simplytranslate/**'
     branches: [main]
   workflow_dispatch:
 
@@ -31,5 +31,5 @@ jobs:
         with:
           remote_docker_host: ${{ secrets.server_address }}
           tailscale_ssh: true # no need for manual private and public keys
-          compose_file_path: lingva/docker-compose.yml
-          args: -p lingva up -d --remove-orphans
+          compose_file_path: simplytranslate/docker-compose.yml
+          args: -p simplytranslate up -d --remove-orphans
