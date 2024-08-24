@@ -5,7 +5,7 @@ general:
   instance_name: "بحث أسس" # displayed name
   contact_url: false # mailto:contact@example.com
   enable_metrics: true # record stats
-  donation_url: https://opencollective.com/aosus
+  donation_url: https://aosus.org/support-us
 
 brand:
   new_issue_url: https://github.com/searxng/searxng/issues/new
@@ -101,10 +101,10 @@ doi_resolvers:
 default_doi_resolver: "oadoi.org"
 
 # Configuration of the "Hostname replace" plugin:
-hostname_replace:
-  '(.*\.)?youtube\.com$': "piped.aosus.link"
-  '(.*\.)?youtu\.be$': "piped.aosus.link"
-  '(.*\.)?youtube-noocookie\.com$': "piped.aosus.link"
+hostnames:
+  # '(.*\.)?youtube\.com$': "piped.aosus.link"
+  # '(.*\.)?youtu\.be$': "piped.aosus.link"
+  # '(.*\.)?youtube-noocookie\.com$': "piped.aosus.link"
   '(.*\.)?reddit\.com$': "redlib.aosus.link"
   '(.*\.)?redd\.it$': "redlib.aosus.link"
   '(www\.)?twitter\.com$': "nitter.aosus.link"
@@ -124,11 +124,6 @@ engines:
 
   - name: brave
     disabled: false
-
-  - name: lingva
-    engine: lingva
-    # set lingva instance in url, by default it will use the official instance
-    url: https://lingva.aosus.link
 
   - name: ddg definitions
     engine: duckduckgo_definitions
