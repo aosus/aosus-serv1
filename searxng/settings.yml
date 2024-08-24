@@ -79,13 +79,15 @@ enabled_plugins:
   # these plugins are enabled if nothing is configured ..
   - "Hash plugin"
   - "Search on category select"
-  - "Self Informations"
+  - 'Self Information'  
   - "Tracker URL remover"
   - "Ahmia blacklist" # activation depends on outgoing.using_tor_proxy
   # these plugins are disabled if nothing is configured ..
-  - "Hostname replace" # see hostname_replace configuration below
+  - "Hostnames plugin" # see hostname_replace configuration below
   - 'Open Access DOI rewrite'
   # - 'Vim-like hotkeys'
+  - 'Basic Calculator'
+  - 'Autodetect search language'
 
 doi_resolvers:
   oadoi.org: "https://oadoi.org/"
@@ -102,14 +104,19 @@ default_doi_resolver: "oadoi.org"
 
 # Configuration of the "Hostname replace" plugin:
 hostnames:
-  # '(.*\.)?youtube\.com$': "piped.aosus.link"
-  # '(.*\.)?youtu\.be$': "piped.aosus.link"
-  # '(.*\.)?youtube-noocookie\.com$': "piped.aosus.link"
-  '(.*\.)?reddit\.com$': "redlib.aosus.link"
-  '(.*\.)?redd\.it$': "redlib.aosus.link"
-  '(www\.)?twitter\.com$': "nitter.aosus.link"
-  '([^.\s]+\.)?medium\.com$': "scribe.aosus.link"
-  '(i\.)?imgur\.com$': "rimgo.aosus.link"
+    replace:
+    # '(.*\.)?youtube\.com$': "piped.aosus.link"
+    # '(.*\.)?youtu\.be$': "piped.aosus.link"
+    # '(.*\.)?youtube-noocookie\.com$': "piped.aosus.link"
+      '(.*\.)?reddit\.com$': "redlib.aosus.link"
+      '(.*\.)?redd\.it$': "redlib.aosus.link"
+      '(www\.)?twitter\.com$': "nitter.aosus.link"
+      '([^.\s]+\.)?medium\.com$': "scribe.aosus.link"
+      '(i\.)?imgur\.com$': "rimgo.aosus.link"
+    high_priority:
+      - '(.*\.)?aosus.org$'
+    low_priority:
+      - '(.*\.)?stackshare.com$'
   # '(www\.)?instagram\.com/p/$': 'bibliogram.aosus.org/p'
   # '(www\.)?instagram\.com': 'bibliogram.aosus.org/u'
 
