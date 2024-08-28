@@ -8,7 +8,7 @@ networks:
 services:
   proxiok:
     container_name: proxitok
-    image: ghcr.io/pablouser1/proxitok:master@sha256:17784a9c813e556997787cdfa54051238632fd7a77456bf04fcfeb7015140fd3
+    image: ghcr.io/pablouser1/proxitok:master@sha256:9300a54e10314e1fb8b3c2056705d6a931ce979d92793fd972c37ded446ece60
     restart: always
 #    ports:
 #      - 8080:8080
