@@ -1,0 +1,94 @@
+networks:
+  default:
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: 2001:db8:2::/64
+  web:
+    external: true
+
+services:
+  pipedfrontend:
+    image: 1337kavin/piped-frontend:latest@sha256:0debb99c760ca3a875fb5656e73570ad6a30c3b036969386d410d888d50d1706
+    restart: always
+    container_name: pipedfrontend
+    depends_on:
+      - piped
+    entrypoint: ash -c 'sed -i s/pipedapi.kavin.rocks/api.piped.aosus.link/g /usr/share/nginx/html/assets/* && /docker-entrypoint.sh && nginx -g "daemon off;"'
+    networks:
+      web:
+
+  piped-proxy:
+    image: 1337kavin/piped-proxy:latest@sha256:a4c71d5f48c8ad8c8eecd9d6a464420f0aef2261f4ed8dcfb5d6f5b8481ce16f
+    container_name: piped-proxy
+    restart: always
+    environment:
+      - UDS=1
+    volumes:
+      - piped-proxy:/app/socket
+
+  piped:
+    image: 1337kavin/piped:latest@sha256:e9938cdda0745c4986d4add0f255777d3989849b851f290d94a4ab2b21c25384
+    container_name: piped
+    restart: always
+    configs:
+      - source: piped
+        target: /app/config.properties
+    depends_on:
+      - postgres
+      
+  nginx:
+    image: nginx:mainline-alpine@sha256:c04c18adc2a407740a397c8407c011fc6c90026a9b65cceddef7ae5484360158
+    restart: always
+    container_name: piped-nginx
+    volumes:
+      - piped-proxy:/var/run/ytproxy
+    configs:
+      - source: nginx
+        target: /etc/nginx/nginx.conf
+      - source: pipedapi
+        target: /etc/nginx/conf.d/pipedapi.conf
+      - source: pipedproxy
+        target: /etc/nginx/conf.d/pipedproxy.conf
+      - source: pipedfrontend
+        target: /etc/nginx/conf.d/pipedfrontend.conf
+      - source: ytproxy
+        target: /etc/nginx/snippets/ytproxy.conf
+    depends_on:
+      - piped
+      - piped-proxy
+      - pipedfrontend
+    networks:
+      - default
+      - web
+
+  postgres:
+    image: postgres:15.8-alpine@sha256:fa484d844b88ac34811daf3da66af1fd17e34b0e1ff5d1b6f904269c85890dc0
+    container_name: piped-postgres
+    restart: always
+    volumes:
+      - /home/ubuntu/piped/postgres:/var/lib/postgresql/data:rw
+    environment:
+      - POSTGRES_DB=piped
+      - POSTGRES_USER=piped
+      - POSTGRES_PASSWORD=(piped_postgres_password)
+
+volumes:
+  piped-proxy:
+    external: true
+
+configs:
+  nginx:
+    file: /home/ubuntu/piped/config/nginx.conf
+  pipedapi:
+    file: /home/ubuntu/piped/config/pipedapi.conf
+  pipedproxy:
+    file: /home/ubuntu/piped/config/pipedproxy.conf
+  pipedfrontend:
+    file: /home/ubuntu/piped/config/pipedfrontend.conf
+  ytproxy:
+    file: /home/ubuntu/piped/config/ytproxy.conf
+  piped: 
+    file: /home/ubuntu/piped/config.properties
+  ofelia:
+    file: /home/ubuntu/piped/ofelia.ini
