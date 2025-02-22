@@ -112,7 +112,7 @@ hostnames:
       '(.*\.)?redd\.it$': "redlib.aosus.link"
       '(www\.)?twitter\.com$': "nitter.aosus.link"
       '([^.\s]+\.)?medium\.com$': "scribe.aosus.link"
-      '(i\.)?imgur\.com$': "rimgo.aosus.link"
+      # '(i\.)?imgur\.com$': "rimgo.aosus.link"
     high_priority:
       - '(.*\.)?aosus.org$'
     low_priority:
