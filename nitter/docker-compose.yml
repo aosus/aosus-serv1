@@ -7,7 +7,7 @@ networks:
 
 services:
   nitter:
-    image: oci.fariszr.com/fariszr/nitter:latest@sha256:d0a38c507b9362bac3e00a1d939fb01e38012d04187c11690567a65dbbd08dea
+    image: docker.io/zedeus/nitter:latest-arm64@sha256:3dca5b991dddb64a05075b33cc12a86f0b11466fdee98d3d7622235d36d43c93
     restart: always
     container_name: nitter
     depends_on:
@@ -16,7 +16,7 @@ services:
       - source: nitter
         target: /src/nitter.conf
     volumes:
-      - /home/ubuntu/nitter/guest_accounts.jsonl:/src/guest_accounts.jsonl:ro
+      - /home/ubuntu/nitter/accounts.jsonl:/src/accounts.jsonl:ro
     networks:
       web:
       default:
