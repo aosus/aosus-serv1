@@ -16,7 +16,7 @@ services:
       - source: nitter
         target: /src/nitter.conf
     volumes:
-      - /home/ubuntu/nitter/accounts.jsonl:/src/accounts.jsonl:ro
+      - /home/ubuntu/nitter/sessions.jsonl:/src/sessions.jsonl:Z,ro
     networks:
       web:
       default:
