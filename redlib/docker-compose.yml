@@ -5,7 +5,7 @@ networks:
 services:
   redlib:
     container_name: redlib
-    image: quay.io/redlib/redlib:latest@sha256:5d21045d46b11fae1946f832d5a51ad5f25079e1055a4356a6185b14b3802d95
+    image: quay.io/redlib/redlib:latest@sha256:6603875e178e766c31b99c3b342b9707203d18cad0d2bc69bac25e2e036971cd
     restart: always
     environment:
       - REDLIB_ROBOTS_DISABLE_INDEXING=on
