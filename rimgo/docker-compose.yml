@@ -4,7 +4,7 @@ networks:
 
 services:
   rimgo:
-    image: codeberg.org/rimgo/rimgo:1.3.0@sha256:b2e6b42d2ce20018c43bfba31acd03ffe262f72aa22ca55bcbbc4f7d11391e6a
+    image: codeberg.org/rimgo/rimgo:1.3.0@sha256:1b279dafa95fd22c908f187049f97391787f67366ee5c47a0e9ce38fdfe97356
     # ports:
     #   - 3000:3000
     environment:
