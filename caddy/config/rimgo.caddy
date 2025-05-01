@@ -1,6 +1,7 @@
 rimgo.aosus.link {
 	encode zstd gzip
-	reverse_proxy rimgo:3000
+	import anubis-global
+	reverse_proxy anubis-rimgo:8923
 	respond /robots.txt 200 {
 		body "User-agent: *
 Disallow: /"

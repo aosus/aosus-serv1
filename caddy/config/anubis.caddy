@@ -1,0 +1,7 @@
+(anubis-global) {
+    handle_path /.within.website/x/cmd/anubis/static/img/* {
+    root * /srv/static
+    file_server
+	}
+}
+
