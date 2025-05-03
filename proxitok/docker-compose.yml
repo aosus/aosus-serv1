@@ -76,7 +76,7 @@ services:
       - web
       - default
     depends_on:
-      - proxiok
+      - proxitok
 
 volumes:
   proxitok-cache:
