@@ -20,13 +20,14 @@ services:
     image: ghcr.io/techarohq/anubis:latest@sha256:4836f8b86a185f7be92e8c76bf03de73ce9ec793b61a27473a72c41811d07cd5
     environment:
       BIND: ":8923"
-      DIFFICULTY: "4"
+      DIFFICULTY: "3"
       METRICS_BIND: ":9090"
       SERVE_ROBOTS_TXT: "false"
       TARGET: "http://redlib:8080"
     volumes:
       - /home/ubuntu/anubis/botPolicy.json:/data/cfg/botPolicy.json:ro
     user: "1000:1000"
+    restart: always
     networks:
       - web
       - default
