@@ -1,6 +1,8 @@
 networks:
   web:
     external: true
+  default:
+    enable_ipv6: true
 
 services:
   rimgo:
@@ -22,4 +24,22 @@ services:
     cap_drop:
       - ALL
     networks:
+      - default
+
+  anubis:
+    container_name: anubis-rimgo
+    image: ghcr.io/techarohq/anubis:latest
+    environment:
+      BIND: ":8923"
+      DIFFICULTY: "4"
+      METRICS_BIND: ":9090"
+      SERVE_ROBOTS_TXT: "false"
+      TARGET: "http://rimgo:3000"
+    volumes:
+      - /home/ubuntu/anubis/botPolicy.json:/data/cfg/botPolicy.json:ro
+    user: "1000:1000"
+    networks:
       - web
+      - default
+    depends_on:
+      - rimgo

@@ -5,7 +5,8 @@ libreddit.aosus.link, libreddit.aosus.org {
 
 redlib.aosus.link {
 	encode zstd gzip
-	reverse_proxy redlib:8080
+	import anubis-global
+	reverse_proxy anubis-redlib:8923
 	respond /robots.txt 200 {
 		body "User-agent: *
 Disallow: /"

@@ -6,7 +6,7 @@ networks:
     external: true
 
 services:
-  proxiok:
+  proxitok:
     container_name: proxitok
     image: ghcr.io/pablouser1/proxitok:master@sha256:9300a54e10314e1fb8b3c2056705d6a931ce979d92793fd972c37ded446ece60
     restart: always
@@ -25,7 +25,6 @@ services:
       - redis
       - signer
     networks:
-      web:
       default:
     security_opt:
       - no-new-privileges:true
@@ -60,6 +59,24 @@ services:
       - no-new-privileges:true
     cap_drop:
       - ALL
+
+  anubis:
+    container_name: anubis-proxitok
+    image: ghcr.io/techarohq/anubis:latest
+    environment:
+      BIND: ":8923"
+      DIFFICULTY: "4"
+      METRICS_BIND: ":9090"
+      SERVE_ROBOTS_TXT: "false"
+      TARGET: "http://proxitok:8080"
+    volumes:
+      - /home/ubuntu/anubis/botPolicy.json:/data/cfg/botPolicy.json:ro
+    user: "1000:1000"
+    networks:
+      - web
+      - default
+    depends_on:
+      - proxitok
 
 volumes:
   proxitok-cache:

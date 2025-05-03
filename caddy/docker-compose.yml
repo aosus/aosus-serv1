@@ -21,6 +21,7 @@ services:
     volumes:
       - /home/ubuntu/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - /home/ubuntu/caddy/config:/etc/caddy/config:ro
+      - /home/ubuntu/caddy/static:/srv/static:ro
       - /home/ubuntu/caddy/proxy_error_page.html:/srv/proxy_error_page.html:ro
       - data:/data
       - config:/config

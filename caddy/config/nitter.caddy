@@ -4,7 +4,9 @@ nitter.aosus.org {
 }
 
 nitter.aosus.link {
-    reverse_proxy nitter:8080
+    encode zstd gzip
+    import anubis-global
+    reverse_proxy anubis-nitter:8923
 	respond /robots.txt 200 {
 		body "User-agent: *
 Disallow: /"
@@ -20,5 +22,4 @@ Disallow: /"
         X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
 		X-XSS-Protection "1; mode=block"
     }
-	encode zstd gzip
 }

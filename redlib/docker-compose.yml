@@ -1,6 +1,8 @@
 networks:
   web:
     external: true
+  default:
+    enable_ipv6: true
 
 services:
   redlib:
@@ -11,4 +13,22 @@ services:
       - REDLIB_ROBOTS_DISABLE_INDEXING=on
       - REDLIB_DEFAULT_USE_HLS=on
     networks:
+      - default
+
+  anubis:
+    container_name: anubis-redlib
+    image: ghcr.io/techarohq/anubis:latest
+    environment:
+      BIND: ":8923"
+      DIFFICULTY: "4"
+      METRICS_BIND: ":9090"
+      SERVE_ROBOTS_TXT: "false"
+      TARGET: "http://redlib:8080"
+    volumes:
+      - /home/ubuntu/anubis/botPolicy.json:/data/cfg/botPolicy.json:ro
+    user: "1000:1000"
+    networks:
       - web
+      - default
+    depends_on:
+      - redlib
