@@ -6,7 +6,7 @@ networks:
     external: true
 
 services:
-  proxiok:
+  proxitok:
     container_name: proxitok
     image: ghcr.io/pablouser1/proxitok:master@sha256:9300a54e10314e1fb8b3c2056705d6a931ce979d92793fd972c37ded446ece60
     restart: always
