@@ -16,6 +16,11 @@
             "action": "ALLOW"
         },
         {
+            "name": "uptime-kuma",
+            "user_agent_regex": "^Uptime-Kuma/.*$",
+            "action": "ALLOW"
+        },
+        {
             "name": "generic-browser",
             "user_agent_regex": "Mozilla",
             "action": "CHALLENGE"
