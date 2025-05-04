@@ -3,12 +3,34 @@ version: '3'
 networks:
   web:
     external: true
+  default:
+    enable_ipv6: true
 
 services:
   quetre:
-    image: oci.fariszr.com/fariszr/quetre:latest@sha256:75d56d6d1240a17b45bfe5562466dea76afea557cf07b33480c8f4cc675fd2ef
+    image: oci.fariszr.com/fariszr/quetre:latest@sha256:625896f06f55b8a71b05004d3a97956ab613ddea46fb2e393fdccedcd6c69298
     expose:
       - 3000
     restart: always
     networks:
-      web:
+      default:
+
+
+  anubis:
+    container_name: anubis-quetre
+    image: ghcr.io/techarohq/anubis:latest@sha256:4836f8b86a185f7be92e8c76bf03de73ce9ec793b61a27473a72c41811d07cd5
+    environment:
+      BIND: ":8923"
+      DIFFICULTY: "3"
+      METRICS_BIND: ":9090"
+      SERVE_ROBOTS_TXT: "false"
+      TARGET: "http://quetre:3000"
+    volumes:
+      - /home/ubuntu/anubis/botPolicy.json:/data/cfg/botPolicy.json:ro
+    user: "1000:1000"
+    restart: always
+    networks:
+      - web
+      - default
+    depends_on:
+      - quetre

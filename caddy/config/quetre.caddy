@@ -4,7 +4,8 @@ quetre.aosus.org {
 }
 
 quetre.aosus.link {
-    reverse_proxy quetre:3000
+    reverse_proxy anubis-quetre:8923
+	import anubis-global
 	respond /robots.txt 200 {
 		body "User-agent: *
 Disallow: /"
