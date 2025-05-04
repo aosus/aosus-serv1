@@ -17,8 +17,7 @@ services:
       - API_CACHE=redis
       - REDIS_HOST=proxitok-redis
       - REDIS_PORT=6379
-      - API_SIGNER=remote
-      - API_SIGNER_URL=http://proxitok-signer:8080/signature
+      - API_CHROMEDRIVER=http://proxitok-chromedriver:9515
     volumes:
       - proxitok-cache:/cache
     depends_on:
@@ -49,16 +48,17 @@ services:
     cap_drop:
       - ALL
 
-  signer:
-    container_name: proxitok-signer
-    restart: always
-    image: ghcr.io/pablouser1/signtok:latest@sha256:b03fe2d10dfd6bed717c0f4a7d253908963a5e7f7ea9bf48855a3f74c924f3a7
-    user: nobody
-    read_only: true
+  chromedriver:
+    container_name: proxitok-chromedriver
+    image: zenika/alpine-chrome:with-chromedriver
+    init: true
+    labels:
+      - "io.containers.autoupdate=registry"
+    shm_size: 1g
+    networks:
+      - proxitok
     security_opt:
-      - no-new-privileges:true
-    cap_drop:
-      - ALL
+      - seccomp:./misc/setup/docker/chrome.json
 
   anubis:
     container_name: anubis-proxitok
