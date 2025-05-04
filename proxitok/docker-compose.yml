@@ -52,11 +52,10 @@ services:
     container_name: proxitok-chromedriver
     image: zenika/alpine-chrome:with-chromedriver
     init: true
-    labels:
-      - "io.containers.autoupdate=registry"
+    restart: always
     shm_size: 1g
     networks:
-      - proxitok
+      - default
     security_opt:
       - seccomp:./misc/setup/docker/chrome.json
 
