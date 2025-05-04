@@ -22,7 +22,6 @@ services:
       - proxitok-cache:/cache
     depends_on:
       - redis
-      - signer
     networks:
       default:
     security_opt:
