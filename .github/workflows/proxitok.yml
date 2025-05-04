@@ -32,4 +32,6 @@ jobs:
           remote_docker_host: ${{ secrets.server_address }}
           tailscale_ssh: true # no need for manual private and public keys
           compose_file_path: proxitok/docker-compose.yml
+          upload_directory: true # upload docker directory
+          docker_compose_directory: proxitok # directory to upload
           args: -p proxitok up -d --remove-orphans
