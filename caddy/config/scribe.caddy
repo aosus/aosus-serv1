@@ -4,7 +4,8 @@ scribe.aosus.org {
 }
 
 scribe.aosus.link {
-	reverse_proxy scribe:8080
+	reverse_proxy anubis-scribe:8923
+	import anubis-global
 	respond /robots.txt 200 {
 		body "User-agent: *
 Disallow: /"
