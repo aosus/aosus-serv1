@@ -49,7 +49,7 @@ services:
 
   chromedriver:
     container_name: proxitok-chromedriver
-    image: zenika/alpine-chrome:with-chromedriver
+    image: zenika/alpine-chrome:with-chromedriver@sha256:84ef08dc5a3101e1988a458b89ccfee5dd314af24e71b89c3f3d24e7b4197ce5
     init: true
     restart: always
     shm_size: 1g
