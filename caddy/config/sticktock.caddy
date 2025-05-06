@@ -1,0 +1,34 @@
+proxitok.aosus.link {
+	redir https://sticktock.aosus.link{uri} 301
+	header Cache-Control "max-age=2592000, stale-while-revalidate=2592000"
+}
+
+sticktock.aosus.link {
+	encode zstd gzip
+	import anubis-global
+	reverse_proxy anubis-sticktock:8923
+	respond /robots.txt 200 {
+		body "User-agent: *
+Disallow: /"
+	}
+	handle_errors {
+		# handle_errors is only triggerd on erros from Caddy and not the proxy, that's why we don't specifiy any errors here.
+		rewrite * /proxy_error_page.html
+		file_server {
+			root /srv/
+		}
+	}
+	header {
+		X-Robots-Tag "noindex, noarchive, nofollow, nosnippet"
+		X-XSS-Protection "1; mode=block"
+	}
+}
+
+api.sticktock.aosus.link {
+	encode zstd gzip
+	reverse_proxy sticktock-api:2000
+	respond /robots.txt 200 {
+		body "User-agent: *
+Disallow: /"
+	}
+}

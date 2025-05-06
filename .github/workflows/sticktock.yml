@@ -1,10 +1,10 @@
-name: deploy-proxitok
+name: deploy-sticktock
 
 on:
   push:
     paths:
-      - '.github/workflows/proxitok.yml'
-      - 'proxitok/**'
+      - '.github/workflows/sticktock.yml'
+      - 'sticktock/**'
     branches: [main]
   workflow_dispatch:
 
@@ -31,7 +31,7 @@ jobs:
         with:
           remote_docker_host: ${{ secrets.server_address }}
           tailscale_ssh: true # no need for manual private and public keys
-          compose_file_path: proxitok/docker-compose.yml
+          compose_file_path: sticktock/docker-compose.yml
           upload_directory: true # upload docker directory
-          docker_compose_directory: proxitok # directory to upload
-          args: -p proxitok up -d --remove-orphans
+          docker_compose_directory: sticktock # directory to upload
+          args: -p sticktock up -d --remove-orphans

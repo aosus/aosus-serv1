@@ -1,0 +1,44 @@
+networks:
+  web:
+    external: true
+  default:
+
+services:
+  anubis:
+    container_name: anubis-sticktock
+    image: ghcr.io/techarohq/anubis:latest@sha256:4836f8b86a185f7be92e8c76bf03de73ce9ec793b61a27473a72c41811d07cd5
+    environment:
+      BIND: ":8923"
+      DIFFICULTY: "3"
+      METRICS_BIND: ":9090"
+      SERVE_ROBOTS_TXT: "false"
+      TARGET: "http://sticktock-frontend:3000"
+    volumes:
+      - /home/ubuntu/anubis/botPolicy.json:/data/cfg/botPolicy.json:ro
+    user: "1000:1000"
+    restart: always
+    networks:
+      - web
+      - default
+    depends_on:
+      - sticktock-frontend
+
+  sticktock-frontend:
+    build:
+      context: ./git/frontend # sticktock relies on a dynamic build process.
+    # ports:
+    #   - '3000:3000'
+    networks:
+      default:
+    depends_on:
+      - sticktock-api
+  
+  sticktock-api:
+    build:
+      context: ./git/backend-api # sticktock relies on a dynamic build process.
+    # ports:
+    #   - '2000:2000'
+    volumes:
+      - ./sticktock-api-data:/var/local/sticktock/
+    networks:
+      web:
