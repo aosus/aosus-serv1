@@ -6,7 +6,7 @@ networks:
 services:
   anubis:
     container_name: anubis-sticktock
-    image: ghcr.io/techarohq/anubis:latest@sha256:4836f8b86a185f7be92e8c76bf03de73ce9ec793b61a27473a72c41811d07cd5
+    image: ghcr.io/techarohq/anubis:latest@sha256:26c45cae12298407c7f45a338915162ad4c5ee4bf6000161084c66babeacec62
     environment:
       BIND: ":8923"
       DIFFICULTY: "3"

@@ -19,7 +19,7 @@ services:
 
   anubis:
     container_name: anubis-scribe
-    image: ghcr.io/techarohq/anubis:latest@sha256:da801311ec5a2c8a6a814c0d7a713aa43551f1a034326a7171b8840751181aed
+    image: ghcr.io/techarohq/anubis:latest@sha256:26c45cae12298407c7f45a338915162ad4c5ee4bf6000161084c66babeacec62
     environment:
       BIND: ":8923"
       DIFFICULTY: "3"
