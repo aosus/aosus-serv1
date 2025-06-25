@@ -39,7 +39,7 @@ services:
 
   anubis:
     container_name: anubis-nitter
-    image: ghcr.io/techarohq/anubis:latest@sha256:26c45cae12298407c7f45a338915162ad4c5ee4bf6000161084c66babeacec62
+    image: ghcr.io/techarohq/anubis:latest@sha256:b5cb519e0ace79d69f23421dcfbd77a16e71119396b0cf66a6e5db8f8fadaee4
     environment:
       BIND: ":8923"
       DIFFICULTY: "3"
