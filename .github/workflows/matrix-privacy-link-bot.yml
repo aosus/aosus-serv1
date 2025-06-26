@@ -1,0 +1,43 @@
+name: deploy-matrix-privacy-link-bot
+
+on:
+  push:
+    paths:
+      - '.github/workflows/matrix-privacy-link-bot.yml'
+      - 'matrix-privacy-link-bot/**'
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Tailscale
+        uses: tailscale/github-action@5d536117a7378beffcd6d8523ce73c50fa98684d
+        with:
+          oauth-client-id: ${{ secrets.TAILSCALE_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TAILSCALE_SECRET }}
+          tags: tag:deploy-ci
+          hostname: Github-actions
+          version: ${{ vars.TAILSCALE_VERSION }}
+
+      - name: Add secrets to config files
+        env:
+          MATRIX_BOT_PASSWORD: ${{ secrets.matrix_bot_password }}
+        run: |
+          sed -i "s/(matrix_bot_password)/$MATRIX_BOT_PASSWORD/g" $GITHUB_WORKSPACE/matrix-privacy-link-bot/docker-compose.yml
+
+      - name: Start Deployment
+        uses: FarisZR/docker-compose-gitops-action@v1
+        with:
+          remote_docker_host: ${{ secrets.server_address }}
+          tailscale_ssh: true # no need for manual private and public keys
+          upload_directory: true # upload docker directory
+          docker_compose_directory: matrix-privacy-link-bot # directory to upload
+          compose_file_path: matrix-privacy-link-bot/docker-compose.yml
+          args: -p matrix-privacy-link-bot up -d --remove-orphans
