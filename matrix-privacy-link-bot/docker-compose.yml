@@ -4,7 +4,7 @@ services:
     container_name: matrix-link-replacer
     restart: always
     volumes:
-      - ./token:/app/store
+      - /home/ubuntu/matrix-privacy-link-bot/token:/app/store
       # If you want to provide custom alts.json and services.json from the host,
       # you can uncomment and adjust the following lines.
       # Ensure MATRIX_BOT_ALTS_JSON_PATH and MATRIX_BOT_SERVICES_JSON_PATH in your .env
@@ -14,7 +14,7 @@ services:
       #
       # Alternatively, if you keep your custom configs named alts.json and services.json
       # in a directory, say, `user_matrix_config` on the host:
-      # - ./alts.json:/app/sample.config/alts.json:ro
+      - /home/ubuntu/matrix-privacy-link-bot/alts.json:/app/sample.config/alts.json:ro
       # - ./services.json:/app/sample.config/services.json:ro
       # This would overwrite the sample.config files copied by the Dockerfile.
       #

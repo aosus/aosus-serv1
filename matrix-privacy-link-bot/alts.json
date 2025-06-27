@@ -1,0 +1,27 @@
+{
+	"xcancel.com": {
+		"description": "Nitter (Twitter proxy)",
+		"thumb_url": "https://xcancel.com/logo.png",
+		"service": "twitter.com"
+	},
+	"nitter.aosus.link": {
+		"description": "Nitter (Twitter proxy)",
+		"thumb_url": "https://nitter.aosus.link/logo.png",
+		"service": "twitter.com"
+	},
+	"imginn.com": {
+		"description": "Instagram proxy",
+		"thumb_url": "https://assets.imginn.com/icons/40.png",
+		"service": "instagram.com"
+	},
+	"redlib.aosus.link": {
+		"description": "Libreddit (Reddit proxy)",
+		"thumb_url": "https://redlib.aosus.link/touch-icon-iphone.png",
+		"service": "reddit.com"
+	},
+	"libreddit.diffraction.dev": {
+		"description": "Libreddit (Reddit proxy)",
+		"thumb_url": "https://libreddit.diffraction.dev/touch-icon-iphone.png",
+		"service": "reddit.com"
+	}
+}
