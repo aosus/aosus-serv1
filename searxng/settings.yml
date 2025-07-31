@@ -18,7 +18,7 @@ search:
   # Filter results. 0: None, 1: Moderate, 2: Strict
   safe_search: 1
   autocomplete: "google"
-  # Default search language - leave blank to detect from browser information or
+  # Default search language - leave blank to detect from browser information o
   # use codes from 'languages.py'
   default_lang: "all"
 
@@ -130,6 +130,9 @@ engines:
     use_mobile_ui: false
 
   - name: brave
+    disabled: false
+
+  - name: startpage
     disabled: false
 
   - name: ddg definitions
