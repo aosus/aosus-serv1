@@ -135,6 +135,9 @@ engines:
   - name: startpage
     disabled: false
 
+  - name: mullvadleta
+    disabled: false
+
   - name: ddg definitions
     engine: duckduckgo_definitions
     disabled: false
