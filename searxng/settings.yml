@@ -125,6 +125,24 @@ hostnames:
   # 'spam\.example\.com': false
 
 engines:
+  - name: "AOSUS Discourse"
+    engine: json_engine
+    paging: false
+    categories: general
+    search_url: "https://discourse.aosus.org/search.json?q={query}&order=latest_topic"
+    results_query: "topics"
+    title_query: "title" 
+    url_query: "slug"
+    content_query: "excerpt"
+    url_prefix: "https://discourse.aosus.org/t/"
+    weight: 2.0
+    timeout: 10.0
+    headers:
+      Api-Key: "(discourse_api_key)"
+      Api-Username: "system"
+      User-Agent: "SearXNG"
+    disabled: false
+
   - name: google
     engine: google
     use_mobile_ui: false
