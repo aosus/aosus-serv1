@@ -132,7 +132,7 @@ engines:
     categories: ['general']
     weight: 2
     shortcut: ads
-    timeout: 10.0
+    timeout: 2.0
     disabled: false
 
   - name: google
