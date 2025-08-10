@@ -29,8 +29,10 @@ jobs:
       - name: Add secrets to config files
         env:
           SEARXNG_SECRET_KEY: ${{ secrets.searxng_secret_key }}
+          DISCOURSE_API_KEY: ${{ secrets.discourse_api_key }}
         run: |
           sed -i "s/(searxng_secret_key)/$SEARXNG_SECRET_KEY/g" $GITHUB_WORKSPACE/searxng/settings.yml
+          sed -i "s/(discourse_api_key)/$DISCOURSE_API_KEY/g" $GITHUB_WORKSPACE/searxng/settings.yml
 
       - name: Start Deployment
         uses: FarisZR/docker-compose-gitops-action@v1
