@@ -125,6 +125,16 @@ hostnames:
   # 'spam\.example\.com': false
 
 engines:
+  - name: 'AOSUS Discourse'
+    engine: discourse
+    base_url: 'https://discourse.aosus.org'
+    api_key: '(discourse_api_key)'
+    categories: ['general']
+    weight: 2
+    shortcut: ads
+    timeout: 2.0
+    disabled: false
+
   - name: google
     engine: google
     use_mobile_ui: false
