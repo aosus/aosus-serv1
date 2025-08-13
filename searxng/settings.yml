@@ -146,7 +146,7 @@ engines:
     disabled: false
 
   - name: mullvadleta
-    disabled: false
+    disabled: true
 
   - name: ddg definitions
     engine: duckduckgo_definitions
