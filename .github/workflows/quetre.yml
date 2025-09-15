@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
 
       - name: Tailscale
-        uses: tailscale/github-action@5d536117a7378beffcd6d8523ce73c50fa98684d
+        uses: tailscale/github-action@6d2f2497d75aa425c547811c667f6783fe78ade7
         with:
           oauth-client-id: ${{ secrets.TAILSCALE_CLIENT_ID }}
           oauth-secret: ${{ secrets.TAILSCALE_SECRET }}
