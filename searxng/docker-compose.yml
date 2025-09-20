@@ -8,7 +8,7 @@ networks:
 
 services:
   searxng:
-    image: ghcr.io/searxng/searxng:latest@sha256:5923f0b57d8f83e4cd5bd19bffe20ef3d44cf746dbcc8595f7db1ae48558f456
+    image: ghcr.io/searxng/searxng:latest@sha256:aeb346b10506a945d5e5486f4c00f2048526ccbca5bc875fea67106a640014bd
     restart: unless-stopped
     depends_on:
       - redis
