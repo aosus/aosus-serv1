@@ -9,11 +9,20 @@ services:
     container_name: redlib
     image: quay.io/redlib/redlib:latest@sha256:25dbb5466ebd22e58277d4aa54897899b044f02f7219ca3054784aecc0be34e1
     restart: always
+    user: nobody
     environment:
       - REDLIB_ROBOTS_DISABLE_INDEXING=on
       - REDLIB_DEFAULT_USE_HLS=on
     networks:
       - default
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "--tries=1", "http://localhost:8080/settings"]
+      interval: 5m
+      timeout: 3s
 
   anubis:
     container_name: anubis-redlib
