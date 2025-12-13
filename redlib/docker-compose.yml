@@ -26,7 +26,7 @@ services:
 
   anubis:
     container_name: anubis-redlib
-    image: ghcr.io/techarohq/anubis:latest@sha256:940ac71ef6fc5a90884a33cece2ebca41110909582624ad73b8c76b8cfcd0d35
+    image: ghcr.io/techarohq/anubis:latest@sha256:170d30f7de14f6b19e5d7647a1ea8ff58740828a08a6a364e08210df2955639b
     environment:
       BIND: ":8923"
       DIFFICULTY: "3"
