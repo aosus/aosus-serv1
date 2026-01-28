@@ -1,6 +1,6 @@
 services:
   matrix-link-replacer:
-    image: ghcr.io/aosus/matrix-privacy-link-bot:latest@sha256:611925bedfee2f4d8a32cf642dd7980164aa82d0413fbeddb688e7b8a49ad8a1
+    image: ghcr.io/aosus/matrix-privacy-link-bot:latest@sha256:2f26bd4a84e283399e21e6d493e7f712b91a6fafbed3eff3d1f0aefb6f284a96
     container_name: matrix-link-replacer
     restart: always
     volumes:
